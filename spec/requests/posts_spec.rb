@@ -26,6 +26,10 @@ RSpec.describe 'Post', type: :request do
       it 'Renders the show page for the post controller' do
         expect(response).to render_template(:show)
       end
+
+      it 'Ensures the response body includes the correct placeholder text' do
+        expect(response.body).to include('Welcome to user index page')
+      end
     end
   end
 end

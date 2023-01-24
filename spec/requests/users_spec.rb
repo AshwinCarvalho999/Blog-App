@@ -25,5 +25,9 @@ RSpec.describe 'Users', type: :request do
     it 'Returns or renders the show template' do
       expect(response).to render_template(:show)
     end
+
+    it 'Ensures the response body includes the correct placeholder text' do
+      expect(response.body).to include('Welcome to user index page')
+    end
   end
 end
