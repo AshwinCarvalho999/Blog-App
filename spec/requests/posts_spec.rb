@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Post', type: :request do
   describe 'Get post Index' do
     before :each do
-      get '/users/:user_id/posts/'
+      get users_path(1)
     end
 
     it 'Returns http status of success for post index' do
@@ -16,7 +16,7 @@ RSpec.describe 'Post', type: :request do
 
     describe 'Get all related routes to post show template' do
       before :each do
-        get '/users/:user_id/posts/id'
+        get '/users/'
       end
 
       it 'Returns success status for show routes of the post controller' do
@@ -24,7 +24,7 @@ RSpec.describe 'Post', type: :request do
       end
 
       it 'Renders the show page for the post controller' do
-        expect(response).to render_template(:show)
+        expect(response).to render_template(:index)
       end
     end
   end

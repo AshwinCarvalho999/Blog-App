@@ -1,6 +1,8 @@
 <section class="container">
   <div class="user-box">
-    <img class="image-user" src=<%= @user.photo %> alt="user"/>
+  <% if @user.photo %>
+  <img class="card-img-top" src='<%= @user.photo %>' alt='<%= @user.name %> thumbnail' />
+<% end %>
     <div class="user-info">
       <p class="user-name"><%= @user.name %></p>
       <p class="user-post">Number of posts: <%= @user.posts_counter%></p>

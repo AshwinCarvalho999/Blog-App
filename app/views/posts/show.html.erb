@@ -6,6 +6,17 @@
     </div>
     <p><%= @post.text %></p>
      <p class="comment-text">Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+
+     <div class = 'd-flex'>
+
+     <% if can? :destroy , @post %>
+     <%= button_to 'Delete Post', user_post_path(@user, @post), method: :delete, class: "btn btn-danger mx-3" %>
+     <% end %>
+
+     <%= render "likes/add_like"%>
+     </div>
+
+
   </div>
   <div class="comment-info">
     <% @post.five_recent_comments.each do |comment| %>
@@ -19,11 +30,12 @@
           </span>
         </p>
       </div>
-    <% end %>
-  </div>
+      <% if can? :destroy , comment %>
+      <%= button_to 'Delete comment', user_post_comment_path(@user , @post , comment), method: :delete, class: "btn btn-dark" %>
+      <% end %>
 
-  <div>
-  <%= render "likes/add_like" %>
+      
+    <% end %>
   </div>
   <%= render "comments/add_comment" %>
 </section>
