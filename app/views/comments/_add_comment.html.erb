@@ -1,0 +1,11 @@
+<%= form_with model: Comment, url: user_post_comments_path(@post.author, @post) do |f| %>
+     <div>
+       <%= f.label 'Leave a comment below' %> <br>
+       <%= f.text_area :text, placeholder: "Type In comment", row: 20, required: true %>
+     </div>
+
+     <div> 
+       <%= f.submit "Comment" %>
+     </div>
+
+     <% end %>

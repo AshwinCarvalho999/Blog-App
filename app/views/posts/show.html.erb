@@ -1,1 +1,30 @@
-<h1>Here is a particular article of index 1 for a user</h1>
+<section class="container">
+  <div class="post-info">
+    <div class="post-title-box">
+      <p class="post-title">Post : <%= @post.title %> by <%= @post.author.name %></p>
+     
+    </div>
+    <p><%= @post.text %></p>
+     <p class="comment-text">Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+  </div>
+  <div class="comment-info">
+    <% @post.five_recent_comments.each do |comment| %>
+      <div>
+        <p>
+          <span>
+            <%= comment.author.name %>:
+          </span>
+          <span>
+            <%= comment.text %>
+          </span>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+  <%= render "likes/add_like" %>
+  </div>
+  <%= render "comments/add_comment" %>
+</section>
+

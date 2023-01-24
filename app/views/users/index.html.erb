@@ -1,3 +1,16 @@
-<div>
-     <h1> Here is a list of all users <h1>
-<div />
+<section class="show-user">
+   <div class="card" style="width: 18rem;">
+      <ul class="users_list">
+          <% @users.each do |user| %>
+               <li class = 'user' >
+                    <img class="card-img-top" src='<%= user.photo %>' alt='<%= user.name %> thumbnail' />
+                    <div class='card-body'>
+                         <h5> Username: <%= user.name%></h5>
+                         <p class="card-text">Number of Posts: <%= user.posts_counter %></p>
+                          <%= link_to 'View user posts', user_path(user), class: "btn btn-primary text-center"  %>
+                    </div>
+               </li>
+          <% end %>
+     </ul>
+     </div>
+</section>
