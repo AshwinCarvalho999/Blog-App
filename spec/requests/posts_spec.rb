@@ -1,31 +1,42 @@
 require 'rails_helper'
 
-RSpec.describe 'Post', type: :request do
-  describe 'Get post Index' do
-    before :each do
-      get '/users/:user_id/posts/'
-    end
+RSpec.describe 'Posts', type: :request do
+  before(:each) do
+    @user =
+      User.create(
+        name: 'John',
+        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+        bio: 'I am a frontend developer',
+        posts_counter: 4
+      )
 
-    it 'Returns http status of success for post index' do
+    @post =
+      Post.create(
+        author: @user,
+        title: 'My first post',
+        text: 'This is my first post',
+        comments_counter: 1,
+        likes_counter: 3
+      )
+  end
+
+  context 'GET #index for a user post' do
+    before(:each) { get user_posts_path(@user) }
+    it 'is a success' do
       expect(response).to have_http_status(:ok)
     end
-
-    it 'Render the right index template for post' do
-      expect(response).to render_template(:index)
+    it 'renders index template' do
+      expect(response).to render_template('index')
     end
+  end
 
-    describe 'Get all related routes to post show template' do
-      before :each do
-        get '/users/:user_id/posts/id'
-      end
-
-      it 'Returns success status for show routes of the post controller' do
-        expect(response).to have_http_status(:success)
-      end
-
-      it 'Renders the show page for the post controller' do
-        expect(response).to render_template(:show)
-      end
+  context 'GET #show' do
+    before(:each) { get user_post_path(@user, @post) }
+    it 'is a success' do
+      expect(response).to have_http_status(:ok)
+    end
+    it 'renders show template' do
+      expect(response).to render_template('show')
     end
   end
 end

@@ -19,10 +19,8 @@
         </span>
       </div>
       <ul class='post-comment'>
-        <% if post.five_recent_comments %>
-        <% post.five_recent_comments.each do |comment| %>
-          <li><%= comment.author_id %>: <%= comment.text %></li>
-          <% end %>
+        <% if post.five_recent_comments.length == 0 %>
+          <p>No comments added!</p>
         <% else %>
           <% post.five_recent_comments.each do |comment| %>
             <li><%= comment.users.name %>: <%= comment.text %></li>

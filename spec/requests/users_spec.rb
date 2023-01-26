@@ -1,29 +1,36 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  describe 'Get index route of users controller' do
-    it 'returns http success' do
-      get '/users/'
-      expect(response).to have_http_status(:success)
-    end
+  before(:each) do
+    @user =
+      User.create(
+        name: 'John',
+        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+        bio: 'I am a frontend developer',
+        posts_counter: 4
+      )
+  end
 
-    it 'Renders the right template index' do
-      get '/'
-      expect(response).to render_template(:index)
+  context 'GET #index' do
+    before(:each) { get users_path }
+    it 'is a success' do
+      expect(response).to have_http_status(:ok)
+    end
+    it "renders 'index' template" do
+      expect(response).to render_template('index')
+    end
+    it 'does not render a different template' do
+      expect(response).to_not render_template(:show)
     end
   end
 
-  describe 'Rendering the show page for the show routes' do
-    before :each do
-      get '/users/:id'
+  context 'GET #show' do
+    before(:each) { get user_path(@user) }
+    it 'is a success' do
+      expect(response).to have_http_status(:ok)
     end
-
-    it 'Returns success status for show routes' do
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'Returns or renders the show template' do
-      expect(response).to render_template(:show)
+    it "renders 'show' template" do
+      expect(response).to render_template('show')
     end
   end
 end
