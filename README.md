@@ -123,6 +123,12 @@ To run the project, execute the following command:
 - Twitter: [@twitterhandle](https://twitter.com)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/ashwin-carvalho-5426701b1/)
 
+👤 **Joel Kugonza**
+
+- GitHub: [@JoelKugonza](https://github.com/Joel-100)
+- Twitter: [@JoelKugonza](https://twitter.com/JoelKugonza)
+- LinkedIn: [JoelKugonza](https://www.linkedin.com/in/joel-kugonza/
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->

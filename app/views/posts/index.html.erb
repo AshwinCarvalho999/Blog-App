@@ -8,6 +8,7 @@
       <p>Number of Posts: <%= @user.posts_counter %></p>
     </div>
   </div>
+  <h4><%= link_to 'Add new Post', new_user_post_path %></h4>
   <div class='user-posts'>
     <% @user.posts.each do |post| %>
       <div class='list-posts'>
@@ -23,7 +24,7 @@
           <p>No comments added!</p>
         <% else %>
           <% post.five_recent_comments.each do |comment| %>
-            <li><%= comment.users.name %>: <%= comment.text %></li>
+            <li><%= comment.author.name %>: <%= comment.text %></li>
           <% end %>
         <% end %>
       </ul>

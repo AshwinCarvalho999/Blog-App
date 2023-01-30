@@ -15,5 +15,9 @@
         <li><%= comment.author.name %>: <%= comment.text %></li>
       <% end %>
     <% end %>
-  </ul> 
+  </ul>
+  <div>
+  <%= render "likes/add_like" %>
+  </div>
+  <%= render "comments/add_comment" %>
 </section>
