@@ -12792,3 +12792,5 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 99ms (Views: 88.7ms | ActiveRecord: 4.5ms | Allocations: 12622)
 
 
+  [1m[35m (211.2ms)[0m  [1m[35mCREATE DATABASE "blog_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (69.4ms)[0m  [1m[35mCREATE DATABASE "blog_app_test" ENCODING = 'unicode'[0m

@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid if post counter is a string or nil' do
-      @user.posts_counter = 'four'
+      @user.posts_counter = '1'
       @user.posts_counter = nil
       expect(@user).to_not be_valid
     end
