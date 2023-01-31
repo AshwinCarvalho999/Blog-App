@@ -282,7 +282,11 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
+<<<<<<< HEAD
    ruby 3.2.0p0
+=======
+   ruby 3.1.3p185
+>>>>>>> refs/remotes/origin/integration-spec-view
 
 BUNDLED WITH
    2.3.26
