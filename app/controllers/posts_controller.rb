@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(:comments)
   end
 
   def show
@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    # @post = current_user.posts.new(post_params)
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
