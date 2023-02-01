@@ -1,0 +1,19 @@
+<section class="container">
+<p class="post-title"> Create New Post :</p>
+<%= form_with model: @post, url: user_posts_path do |form| %>
+     <div>
+     <%= form.label :title %> <br>
+     <%= form.text_field :title %>
+     </div>
+
+     <div>
+     <%= form.label :text %> <br>
+     <%= form.text_field :text %>
+     </div>
+     <br>
+     <div>
+     <%= form.submit "Submit Post" %>
+     </div>
+<% end %>
+
+</section>

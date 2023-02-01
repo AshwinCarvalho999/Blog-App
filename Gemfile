@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rubocop', '>= 1.0', '< 2.0'
-
-ruby '3.0.0'
+ruby '3.2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
+
+gem 'rubocop', '>= 1.0', '< 2.0'
+
+gem 'faker'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -53,9 +55,10 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 3.9.0'
 end
+
+gem 'rails-controller-testing'
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
