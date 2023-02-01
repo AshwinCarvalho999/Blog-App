@@ -2,9 +2,9 @@
   <ul class='user-container'>
     <% @users.each do |user| %>
       <li class='user'>
-        <div class='user-photo'>
+        <% if user.photo %>
           <img src='<%= user.photo %>' alt='<%= user.name %> thumbnail' />
-        </div>
+        <% end %>
         <div class='user-name'>
           <h2><%= link_to user.name, user_path(user) %></h2>
           <p>Number of Posts: <%= user.posts_counter %></p>

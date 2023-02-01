@@ -1,7 +1,9 @@
 <section>
   <div class='one-user'>
     <div class='user-photo'>
-      <img src='<%= @user.photo %>' alt='<%= @user.name %> thumbnail' />
+      <% if @user.photo %>
+        <img class="card-img-top" src='<%= @user.photo %>' alt='<%= @user.name %> thumbnail' />
+      <% end %>
     </div>
     <div class='user-name'>
       <h2><%= @user.name %></h2>
