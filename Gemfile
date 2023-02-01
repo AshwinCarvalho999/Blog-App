@@ -27,7 +27,7 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 
 # Add Devise for authentication
-#################### gem 'devise'
+gem 'devise'
 
 # Add encryption for password
 gem 'bcrypt', '~> 3.1.7'
