@@ -7,17 +7,26 @@
       Likes: <%= @post.likes_counter || 0 %> 
     </span>
   </div>
-  <ul class='post-comment'>      
+  <% if can? :destroy , @post.id %>
+  <%= button_to 'Delete Post', user_post_path(@user, @post), method: :delete, class: "btn btn-danger mx-3" %>
+  <% end %>
+  
+  <%= render "likes/add_like" %>
+    <ul class='post-comment'>      
     <% if @post.comments.length == 0 %>
       <p>No comments added!</p>
     <% else %>
       <% @post.comments.each do |comment| %>
         <li><%= comment.author.name %>: <%= comment.text %></li>
       <% end %>
+      
     <% end %>
   </ul>
-  <div>
-  <%= render "likes/add_like" %>
-  </div>
+  <div class = 'd-flex'>
+  <% if can? :destroy , @comment %>
+  <%= button_to 'Delete comment', user_post_comment_path(@user , @post , comment), method: :delete, class: "btn btn-dark" %>
+  <% end %>
   <%= render "comments/add_comment" %>
+  </div>
+  
 </section>

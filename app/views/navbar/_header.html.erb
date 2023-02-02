@@ -1,9 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
   <%= link_to 'Home', root_path, class: "navbar-brand text-white" %>
-  <% if user_signed_in? %>
-    <%= button_to t('sign_out'), destroy_user_session_path, method: :delete %>
-    <% end %>
+  
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,13 +18,9 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+        <% if user_signed_in? %>
+         <%= button_to t('sign_out'), destroy_user_session_path, method: :delete, class:"btn btn-outline-danger" %>
+        <% end %>
     </div>
   </div>
 </nav>
-
-
-
-
-
-
-
