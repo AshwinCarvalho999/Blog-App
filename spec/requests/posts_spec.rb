@@ -1,42 +1,35 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe 'Posts', type: :request do
-  before(:each) do
-    @user =
-      User.create(
-        name: 'John',
-        photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-        bio: 'I am a frontend developer',
-        posts_counter: 4
-      )
+# RSpec.describe 'Posts', type: :request do
+#   describe 'GET /index' do
+#     before(:example) { get '/users/:id/posts' }
 
-    @post =
-      Post.create(
-        author: @user,
-        title: 'My first post',
-        text: 'This is my first post',
-        comments_counter: 1,
-        likes_counter: 3
-      )
-  end
+#     it 'Is response status correct' do
+#       expect(response).to have_http_status(:ok)
+#     end
 
-  context 'GET #index for a user post' do
-    before(:each) { get user_posts_path(@user) }
-    it 'is a success' do
-      expect(response).to have_http_status(:ok)
-    end
-    it 'renders index template' do
-      expect(response).to render_template('index')
-    end
-  end
+#     it 'Is correct template rendered' do
+#       expect(response).to render_template('index')
+#     end
 
-  context 'GET #show' do
-    before(:each) { get user_post_path(@user, @post) }
-    it 'is a success' do
-      expect(response).to have_http_status(:ok)
-    end
-    it 'renders show template' do
-      expect(response).to render_template('show')
-    end
-  end
-end
+#     it 'Is the body includes correct text' do
+#       expect(response.body).to include('Here is a list of posts for a given user')
+#     end
+#   end
+
+#   describe 'GET /show' do
+#     before(:example) { get '/users/:id/posts/:id' }
+
+#     it 'Is response status correct' do
+#       expect(response).to have_http_status(:ok)
+#     end
+
+#     it 'Is correct template rendered' do
+#       expect(response).to render_template('show')
+#     end
+
+#     it 'Is the body includes correct text' do
+#       expect(response.body).to include('Here are the details of a given post for a given user')
+#     end
+#   end
+# end

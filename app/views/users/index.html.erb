@@ -1,16 +1,22 @@
-<section>
-  <ul class='user-container'>
-    <% @users.each do |user| %>
-      <li class='user'>
-        <% if user.photo %>
-          <img src='<%= user.photo %>' alt='<%= user.name %> thumbnail' />
-        <% end %>
-        <div class='user-name'>
-          <h2><%= link_to user.name, user_path(user) %></h2>
-          <p>Number of Posts: <%= user.posts_counter %></p>
+<ul class="users-list">
+<% @users.each do |user| %>
+  <li>
+    <%= link_to controller: "users", action: "show", id: user.id do %>
+      <div class="user-card">
+        <div class="card-img">
+          <%= user.photo.nil? ? image_tag(user.photo) : image_tag("user-img-placeholder.png") %>
         </div>
-      </li>
+        <div class="card-content">
+          <h4>
+            <%= user.name %>
+          </h4>
+          <span class="posts-counter">
+            Posts: <%= user.posts_counter || 0 %>
+          </span>
+        </div>
+      </div>
     <% end %>
-  </ul>
-</section>
+  </li>
+<% end %>
+</ul>
 
