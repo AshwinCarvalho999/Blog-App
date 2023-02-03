@@ -1,32 +1,35 @@
-<section>
-  <div class='one-user'>
-    <div class='user-photo'>
-      <% if @user.photo %>
-        <img class="card-img-top" src='<%= @user.photo %>' alt='<%= @user.name %> thumbnail' />
+<div class="user-card">
+  <div class="card-img">
+    <%= @user.photo.nil? ? image_tag(@user.photo): image_tag("user-img-placeholder.png") %>
+  </div>
+  <div class="card-content">
+    <h4>
+      <%= @user.name %>
+    </h4>
+    <span class="posts-counter">
+      Posts: <%= @user.posts_counter %>
+    </span>
+  </div>
+</div>
+
+<div class="user-bio">
+  <h5>Bio:</h5>
+  <p><%= @user.bio %></p>
+</div>
+
+<ul class="user-posts">
+  <% @user.last_three_posts.each do |post| %>
+    <li>
+      <%= link_to "/users/#{@user.id}/posts" do %>
+        <div class="post-card">
+          <h6 class="post-title"><%= post.title %></h6>
+          <p><%= post.text %></p>
+          <div class="post-details-counter">
+            <span>Likes: <%= post.likes_counter || 0 %></span>
+            <span>Comments: <%= post.comments_counter || 0 %></span>
+          </div>
+        </div>
       <% end %>
-    </div>
-    <div class='user-name'>
-      <h2><%= @user.name %></h2>
-      <p>Number of Posts: <%= @user.posts_counter || 0 %></p>
-    </div>
-  </div>
-  <div class='user-bio'>
-    <h4>Bio</h4>
-    <h5><%= @user.bio %></h5>
-  </div>
-  <div class='posts'>
-    <% @user.three_most_recent_post.each do |post| %>
-      <div class='list-posts'>
-        <h5><%= link_to post.title, user_post_path(@user, post) %></h5>
-        <p><%= post.text %></p>
-        <span class='like-comment'>
-          Comments: <%= post.comments_counter || 0 %>, 
-          Likes: <%= post.likes_counter || 0 %> 
-        </span>
-      </div>
-    <% end %>
-  </div>
-  <button class='see-btn'>
-    <%= link_to 'see all posts', user_posts_path(@user) %>
-  </button>
-</section>
+    </li>
+  <% end %>
+</ul>

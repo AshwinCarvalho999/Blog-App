@@ -1,23 +1,27 @@
-<section>
-  <div class='list-posts'>
-    <h3><%= @post.title %> by <%= @post.author.name %> </h3>
-    <p><%= @post.text %></p>
-    <span class='like-comment'>
-      Comments: <%= @post.comments_counter || 0 %>, 
-      Likes: <%= @post.likes_counter || 0 %> 
-    </span>
-  </div>
-  <ul class='post-comment'>      
-    <% if @post.comments.length == 0 %>
-      <p>No comments added!</p>
-    <% else %>
-      <% @post.comments.each do |comment| %>
-        <li><%= comment.author.name %>: <%= comment.text %></li>
-      <% end %>
+<div class="post-card">
+  <h6 class="post-title"><%= @post.title %></h6>
+  <p><%= @post.text %></p>
+  <div class="post-details-counter">
+    <span>Likes: <%= @post.likes_counter || 0 %></span>
+    <span>Comments: <%= @post.comments_counter || 0 %></span>
+    <% if can? :destroy , @post %>
+      <%= button_to "Delete", user_post_path, method: :delete, class: "btn-delete" %>
     <% end %>
-  </ul>
-  <div>
-  <%= render "likes/add_like" %>
   </div>
-  <%= render "comments/add_comment" %>
-</section>
+</div>
+
+<% if @post.comments.length > 0 %>
+  <div class="comments-card">
+    <ul class="post-comments">
+      <% @post.last_five_comments.each do |comment| %>
+        <li><%= comment.author.name %>: &nbsp; <%= comment.text %></li>
+          <% if can? :destroy , comment %>
+            <%= button_to "Comment Delete", user_post_comment_path(user_id: current_user.id, post_id: @post.id, id: comment.id), method: :delete, class: "btn-delete" %>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render "comments/form", post: @post %>
+<%= render "likes/form", post: @post %>
